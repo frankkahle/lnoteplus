@@ -26,16 +26,16 @@ A Notepad++-like text editor for Linux, built with Python 3, PyQt5, and QScintil
 
 ### Download the .deb package (recommended)
 
-Download the latest `.deb` from the [releases](https://github.com/frankkahle/lnoteplus/releases) page, then:
+Download `notepadplus_1.0.0_amd64.deb` from the [releases](https://github.com/frankkahle/lnoteplus/releases) page, or directly from the `dist/` folder in this repo, then:
 
 ```bash
 sudo dpkg -i notepadplus_1.0.0_amd64.deb
 sudo apt-get install -f   # install dependencies if needed
 ```
 
-This installs NotepadPlus system-wide with a desktop entry, icon, and the `notepadplus` command.
+This installs NotepadPlus system-wide with a desktop entry, icon, and the `notepadplus` command. Dependencies (`python3-pyqt5`, `python3-pyqt5.qsci`) are pulled in automatically.
 
-### Or install from source
+### Install from source
 
 ```bash
 git clone https://github.com/frankkahle/lnoteplus.git
@@ -43,17 +43,16 @@ cd lnoteplus
 sudo ./install.sh
 ```
 
-### Uninstall
+The installer handles dependencies, copies the application to `/opt/notepadplus/`, creates the `notepadplus` command, and adds a desktop entry with icon to your application menu.
+
+### Build the .deb yourself
 
 ```bash
-# If installed via .deb
-sudo dpkg -r notepadplus
-
-# If installed via install.sh
-sudo /opt/notepadplus/uninstall.sh
+git clone https://github.com/frankkahle/lnoteplus.git
+cd lnoteplus
+./build-deb.sh
+sudo dpkg -i dist/notepadplus_1.0.0_amd64.deb
 ```
-
-Tested on Ubuntu/Debian-based distributions.
 
 ## Usage
 
@@ -68,11 +67,7 @@ notepadplus file1.py file2.txt
 notepadplus -n
 ```
 
-## Uninstall
-
-```bash
-sudo /opt/notepadplus/uninstall.sh
-```
+Or find **NotepadPlus** in your application menu.
 
 ## Keyboard Shortcuts
 
@@ -102,7 +97,31 @@ sudo /opt/notepadplus/uninstall.sh
 
 ## Configuration
 
-Settings are stored in `~/.config/notepadplus/settings.json`. Sessions are saved to `~/.config/notepadplus/session.json`. Macros are saved to `~/.config/notepadplus/macros.json`.
+Settings are stored in `~/.config/notepadplus/`:
+
+| File | Purpose |
+|---|---|
+| `settings.json` | Editor preferences, theme, font, etc. |
+| `session.json` | Open tabs, cursor positions, scroll state |
+| `macros.json` | Saved macros |
+
+All settings can be changed from **Tools > Preferences** within the app.
+
+## Uninstall
+
+```bash
+# If installed via .deb
+sudo dpkg -r notepadplus
+
+# If installed via install.sh
+sudo /opt/notepadplus/uninstall.sh
+```
+
+User settings at `~/.config/notepadplus/` are preserved. Remove them manually if desired.
+
+## Supported Platforms
+
+Tested on Ubuntu/Debian-based distributions (Ubuntu 22.04+, Debian 12+, Linux Mint, Pop!_OS, etc.).
 
 ## License
 
