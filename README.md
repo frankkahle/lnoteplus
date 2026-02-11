@@ -24,18 +24,34 @@ A Notepad++-like text editor for Linux, built with Python 3, PyQt5, and QScintil
 
 ## Installation
 
+### Download the .deb package (recommended)
+
+Download the latest `.deb` from the [releases](https://github.com/frankkahle/lnoteplus/releases) page, then:
+
+```bash
+sudo dpkg -i notepadplus_1.0.0_amd64.deb
+sudo apt-get install -f   # install dependencies if needed
+```
+
+This installs NotepadPlus system-wide with a desktop entry, icon, and the `notepadplus` command.
+
+### Or install from source
+
 ```bash
 git clone https://github.com/frankkahle/lnoteplus.git
 cd lnoteplus
 sudo ./install.sh
 ```
 
-The installer automatically handles everything:
-- Installs dependencies (Python 3, PyQt5, QScintilla) if needed
-- Installs the application to `/opt/notepadplus/`
-- Creates the `notepadplus` command
-- Adds a desktop entry and icon to your application menu
-- Registers as a handler for text and code files
+### Uninstall
+
+```bash
+# If installed via .deb
+sudo dpkg -r notepadplus
+
+# If installed via install.sh
+sudo /opt/notepadplus/uninstall.sh
+```
 
 Tested on Ubuntu/Debian-based distributions.
 
