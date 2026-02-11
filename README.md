@@ -22,33 +22,40 @@ A Notepad++-like text editor for Linux, built with Python 3, PyQt5, and QScintil
 - **Preferences dialog** - Customize fonts, themes, tab size, word wrap, and more
 - **Notepad++ keyboard shortcuts** - Ctrl+N, Ctrl+O, Ctrl+S, Ctrl+F, Ctrl+H, Ctrl+G, F3, Ctrl+D, and more
 
-## Requirements
-
-- Python 3
-- PyQt5
-- QScintilla
-
 ## Installation
 
 ```bash
-# Ubuntu / Debian
-sudo apt install python3-pyqt5 python3-pyqt5.qsci
-
-# Or via pip
-pip install PyQt5 QScintilla
+git clone https://github.com/frankkahle/lnoteplus.git
+cd lnoteplus
+sudo ./install.sh
 ```
+
+The installer automatically handles everything:
+- Installs dependencies (Python 3, PyQt5, QScintilla) if needed
+- Installs the application to `/opt/notepadplus/`
+- Creates the `notepadplus` command
+- Adds a desktop entry and icon to your application menu
+- Registers as a handler for text and code files
+
+Tested on Ubuntu/Debian-based distributions.
 
 ## Usage
 
 ```bash
-# Launch with empty tab
-python3 main.py
+# Launch from anywhere
+notepadplus
 
 # Open specific files
-python3 main.py file1.py file2.txt
+notepadplus file1.py file2.txt
 
 # Start fresh (ignore saved session)
-python3 main.py -n
+notepadplus -n
+```
+
+## Uninstall
+
+```bash
+sudo /opt/notepadplus/uninstall.sh
 ```
 
 ## Keyboard Shortcuts
